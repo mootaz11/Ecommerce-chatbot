@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" 
+      
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    
+
+
+
+
+      <mat-toolbar>Menu</mat-toolbar>
+    
+    <mat-nav-list >
+      <a mat-list-item routerLink="produits">produits</a>
+      <a mat-list-item routerLink="categories">Categories</a>
+      <a mat-list-item routerLink="souscategories">Sub-Categories</a>
+      <a mat-list-item routerLink="commandes">Commandes</a>
+      <a mat-list-item routerLink="userslist">Users</a>
+    </mat-nav-list>
+   
+  </mat-sidenav>
+  
+  
+  <mat-sidenav-content>
+<router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>

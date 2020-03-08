@@ -1,0 +1,15 @@
+.chat
+{
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-top: 5px;
+    padding-top: 2px;
+    padding-left:3px;
+    padding-bottom: 2px;
+    width: 300px;
+    float : right;
+}
+
+.modal-body{
+    overflow: auto;
+}

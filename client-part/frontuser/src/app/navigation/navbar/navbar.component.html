@@ -1,0 +1,19 @@
+<!-- NAVIGATION -->
+<nav id="navigation">
+    <!-- container -->
+    <div class="container">
+      <!-- responsive-nav -->
+      <div id="responsive-nav">
+        <!-- NAV -->
+        <ul class="main-nav nav navbar-nav">
+          <li class="active"><a routerLink="">Home</a></li>
+          <li><a routerLink="hotdeal">Hot Deals</a></li>
+          <li  id={{categorie.id}}  *ngFor="let categorie of Categories ;let i = index "><a  routerLink="{{categorie.id}}/products" >{{categorie.name_cat}}</a></li>
+        </ul>
+        <!-- /NAV -->
+      </div>
+      <!-- /responsive-nav -->
+    </div>
+    <!-- /container -->
+  </nav>
+  <!-- /NAVIGATION -->

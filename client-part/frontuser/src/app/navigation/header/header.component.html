@@ -1,0 +1,281 @@
+<!-- HEADER -->
+<header>
+  <!-- TOP HEADER -->
+  <div id="top-header">
+    <div class="container">
+      <ul class="header-links pull-left">
+        <li><a href="#" rounded="true" data-toggle="modal" data-target="#help"
+          (click)="framehelp.show()"><i class="fa fa-question-circle" aria-hidden="true"></i>help</a></li>
+
+        <li><a href="#"><i class="fa fa-envelope-o"></i>electrosm@gmail.com</a></li>
+        <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+      </ul>
+
+
+
+
+
+
+      <ul class="header-links pull-right">
+        <li><a   color="default" href="#" rounded="true" data-toggle="modal" data-target="#basicExample"
+            (click)="frame.show()" *ngIf="isLoggedin==false"><i class="fa fa-sign-in"></i>sign in</a>
+        </li>
+        <li><a color="default" routerLink="myorders"
+          *ngIf="isLoggedin==true"><i class="fa fa-bars" aria-hidden="true"></i>
+          my orders</a>
+      </li>
+
+
+        <li><a routerLink='wishlist' *ngIf="isLoggedin==true"><i class="fa fa-user-o"></i> Hi {{username}} !</a></li>
+        <li><a  href="#" (click)="logout()" *ngIf="isLoggedin==true"><i class="fa fa-sign-out"></i> logout</a></li>
+
+        <li><a *ngIf="isLoggedin==false" color="default" href="#" rounded="true" data-toggle="modal"
+            data-target="#signup" (click)="frame1.show()"><i class="fa fa-user-plus"></i> sign up</a></li>
+      </ul>
+
+
+    </div>
+  </div>
+  <!-- /TOP HEADER -->
+
+  <!-- MAIN HEADER -->
+  <div id="header">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <!-- LOGO -->
+        <div class="col-md-3">
+          <div class="header-logo">
+            <a href="#" class="logo">
+              <img src="assets/img/logo.png" alt="">
+            </a>
+          </div>
+        </div>
+        <!-- /LOGO -->
+
+        <!-- SEARCH BAR -->
+        <div class="col-md-6">
+          <div class="header-search">
+           <form [formGroup]="SearchForm" (ngSubmit)="Onsearch()">
+             
+              <input  formControlName="searchField" class="input" placeholder="Search here">
+              <button class="search-btn" type="submit">Search</button>
+            </form> 
+          </div>
+        </div>
+        <!-- /SEARCH BAR -->
+
+        <!-- ACCOUNT -->
+        <div class="col-md-3 clearfix">
+          <div class="header-ctn">
+            <!-- Wishlist -->
+            <div>
+              <a routerLink="wishlist">
+                <i class="fa fa-heart-o"></i>
+                <span>Your Wishlist</span>
+                <div class="qty">{{wishlistnumber}}</div>
+              </a>
+            </div>
+            <!-- /Wishlist -->
+
+            <!-- Cart -->
+            <div class="dropdown">
+              <a href="#" (click)="showpanier()" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Your Cart</span>
+                <div class="qty">{{itemsNumber}}</div>
+              </a>
+
+              
+              <div class="cart-dropdown">
+                <div class="cart-list">
+                 
+                  <div class="product-widget" *ngFor="let product of productsPanier">
+                    <div class="product-img">
+                      <img src={{product.image}} alt="">
+                    </div>
+                    <div class="product-body">
+                      <h3 class="product-name"><a href="#">{{product.title}}</a></h3>
+                      <h4 class="product-price"><span class="qty">1x</span>{{product.price}}</h4>
+                    </div>
+                    <button  (click)="deleteProduct(product.id)" class="delete"><i class="fa fa-close"></i></button>
+                  </div>
+
+                  
+                  
+                  
+                </div>
+
+                <div class="cart-summary">
+                  <small>{{itemsNumber}} items</small>
+                  <h5>SUBTOTAL: {{pricetotal}}</h5>
+                </div>
+
+                <div class="cart-btns">
+                  <a>View Cart</a>
+                  <a routerLink="order">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+
+                
+              </div>
+            </div>
+            <!-- /Cart -->
+
+            <!-- Menu Toogle -->
+            <div class="menu-toggle">
+              <a href="#">
+                <i class="fa fa-bars"></i>
+                <span>Menu</span>
+              </a>
+            </div>
+            <!-- /Menu Toogle -->
+          </div>
+        </div>
+        <!-- /ACCOUNT -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </div>
+  <!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
+
+
+<div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="loginform" (ngSubmit)="onLoginSubmit()">
+      <div class="modal-body mx-3">
+
+        <div class="md-form mb-5">
+          <input type="email" id="orangeForm-email" class="form-control"  formControlName="emaiLogin" mdbInput mdbValidate>
+          <label for="orangeForm-email">Your email</label>
+
+        </div>
+
+        <div class="md-form mb-4">
+          <input type="password" id="orangeForm-pass" class="form-control" formControlName="passwordLogin" mdbInput mdbValidate>
+          <label for="orangeForm-pass">Your password</label>
+
+        </div>
+
+      </div>
+      
+      <div class="modal-footer a-flex  justify-content-center">
+        <button mdbBtn class="modal-button" type="submit" (click)="frame.hide()"  mdbWavesEffect>Sign in</button>
+      </div>
+      </form>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<div mdbModal #frame1="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame1.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form [formGroup]="signupform" (ngSubmit)="onsignupSubmit()"> 
+        <div class="modal-body mx-3">
+
+          <div class="md-form mb-5">
+            <input type="text" class="form-control" formControlName="name" mdbInput mdbValidate>
+            <label>Your name</label>
+
+          </div>
+          <div class="md-form mb-5">
+            <input type="text" class="form-control" formControlName="secondname" mdbInput mdbValidate>
+            <label>Your second name</label>
+
+          </div>
+
+
+          <div class="md-form mb-5">
+            <input type="email" id="orangeForm-email" class="form-control" formControlName="email" mdbInput mdbValidate>
+            <label for="orangeForm-email">Your email</label>
+
+          </div>
+
+          <div class="md-form mb-4">
+            <input type="password" id="orangeForm-pass" class="form-control" formControlName="password" mdbInput
+              mdbValidate>
+            <label for="orangeForm-pass">Your password</label>
+
+          </div>
+
+        </div>
+
+        <div class="modal-footer d-flex justify-content-center">
+          <button mdbBtn type="submit" class="modal-button"  (click)="frame1.hide()"  mdbWavesEffect>Sign up</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div mdbModal #framehelp="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">HELP BOT<img src="../../../assets/img/chatbot.png" alt=""></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="framehelp.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>     </div>
+      <div class="modal-body mx-3">
+          <ul>
+            <li  [ngStyle]="{ 'background-color':message.color , 'color':message.colortext,'float':message.float}"   class="chat" *ngFor="let message of conversation">{{message.content}}</li>
+              
+
+          </ul>
+
+
+      </div>
+      
+
+      <div class="modal-footer d-flex justify-content-center">
+     
+        <form [formGroup]="helpForm" (ngSubmit)="onHelpSubmit()">
+         
+            <div class="md-form mb-5">
+              <input  type="email" id="orangeForm-email" class="form-control"  formControlName="helpquestion" mdbInput mdbValidate>
+              <label for="orangeForm-email">enter your question here</label>
+            </div>
+        
+      </form>
+    
+     
+      </div>
+     
+
+
+
+
+
+    </div>
+  </div>
+</div>

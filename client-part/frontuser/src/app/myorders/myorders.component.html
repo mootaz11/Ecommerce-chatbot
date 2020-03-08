@@ -1,0 +1,46 @@
+ <!-- SECTION -->
+ <div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+  
+        <!-- section title -->
+        <div class="col-md-12">
+          <div class="section-title">
+            <h3 class="title">MY ORDERS</h3>
+            
+          </div>
+        </div>
+        <!-- /section title -->
+  
+        <!-- Products tab & slick -->
+  
+        <div class="col-md-12">
+          <div class="row">
+            
+            <div class="products-tabs">
+             
+                    <div class="order-content col-md-9" *ngFor="let order of orders">
+                           
+                      
+                      
+                      
+                            <h1>ORDER Number : {{order.id}}</h1> <br>
+                            <h2>price : {{order.price_com}} $</h2> <br>
+                            <h2>Adresse Order : {{order.adresse}}</h2>
+                          <button class="btn btn-dark"> Delete Order </button>
+                    </div>
+
+
+
+            </div>
+          </div>
+        </div>
+        <!-- Products tab & slick -->
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /SECTION -->

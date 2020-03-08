@@ -1,0 +1,122 @@
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            
+            
+            
+            
+            <form [formGroup]="BillingDetails" (ngSubmit)="addBillingDetails()">
+
+            <div class="col-md-7">
+                <!-- Billing Details -->
+                
+                
+                
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">Billing address</h3>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" id="firstname" formControlName="FirstName" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" id="secondname"  formControlName="SecondName"  placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="email"  id="email" formControlName="email"  placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text"   formControlName="adresse"  placeholder="Address">
+                    </div>
+                  
+                
+                    <div class="form-group">
+                        <input class="input" type="tel"   formControlName="phone" placeholder="Telephone">
+                    </div>
+                   
+                   
+                   
+                    <div  *ngIf="haveAccount==false" class="form-group">
+                        <div class="input-checkbox">
+                            <input type="checkbox" id="create-account">
+                            <label for="create-account">
+                                <span></span>
+                                Create Account?
+                            </label>
+                            <div class="caption">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                                <input class="input" type="password"  formControlName="password" placeholder="Enter Your Password">
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                
+                </div>
+
+            
+                <!-- /Billing Details -->
+            
+            </div>
+
+            <!-- Order Details -->
+            <div class="col-md-5 order-details">
+                <div class="section-title text-center">
+                    <h3 class="title">Your Order</h3>
+                </div>
+                <div class="order-summary">
+                    <div class="order-col">
+                        <div><strong>PRODUCT</strong></div>
+                        <div><strong>TOTAL</strong></div>
+                    </div>
+                    <div class="order-products">
+                        <div *ngFor="let product of productsPanier"class="order-col">
+                            <div>{{product.title}}</div>
+                            <div>{{product.price}}</div>
+                        </div>
+                      
+                    </div>
+                    <div class="order-col">
+                        <div>Shiping</div>
+                        <div><strong>FREE</strong></div>
+                    </div>
+                    <div class="order-col">
+                        <div><strong>TOTAL</strong></div>
+                        <div><strong class="order-total">{{pricetotal}}</strong></div>
+                    </div>
+                </div>
+                
+             <!--
+                 methode payment 
+             -->
+
+
+          
+                  
+             <div class="input-checkbox">
+                    <input type="checkbox" formControlName="terms" id="terms">
+                    <label for="terms">
+                        <span></span>
+                        I've read and accept the <a href="#">terms & conditions</a>
+                    </label>
+                </div>
+             
+
+                <button  [disabled]="(BillingDetails.valid==false)" type="submit"  class="primary-btn order-submit">Place order</button>
+            </div>
+
+        </form>
+
+
+
+
+            <!-- /Order Details -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->

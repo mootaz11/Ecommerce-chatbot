@@ -1,0 +1,126 @@
+<!--Section: Products v.3-->
+
+<section class="text-center pb-3 my-5 mx-2">
+
+  <!--Section heading-->
+  <div class="fixed-action-btn smooth-scroll">
+    <a href="#top-section" class="btn-floating btn-large red">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </div>
+  <!--Grid row-->
+
+  <div class="row">
+
+
+    <!--Grid column-->
+    <div class="col-lg-6 col-md-6 mb-4 ">
+
+      <!--Card-->
+      <mdb-card class="align-items-center">
+
+        <!--Card image-->
+        <div class="view overlay waves-light" mdbWavesEffect>
+          <mdb-card-img id="imageproduct" src={{image}}
+            alt=""></mdb-card-img>
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!--Card image-->
+
+        <!--Card content-->
+        <mdb-card-body class="text-center">
+          <table>
+            <tr>
+              <td *ngFor="let image of images ">
+                <img src={{image.filename}} width="100px" height="100px" alt="">
+              </td>
+
+            </tr>
+          </table>
+
+
+        </mdb-card-body>
+        <!--Card content-->
+
+      </mdb-card>
+      <!--Card-->
+
+    </div>
+    <!--Grid column-->
+
+    <div class="col-lg-6 col-md-6 mb-4 ">
+      <div class="container-details">
+        <div class="row">
+          <div class="col mx-auto">
+            <div class="display-4">Product details</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5> title : {{product.title}}</h5>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>price : {{product.price}}</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>description : {{product.details}}</h5>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <h5>company : {{product.company}}</h5>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+
+            <button class="button-create" type="button" mdbBtn color="dark" mdbWavesEffect>edit Product</button>
+            <button class="button-create" type="button" (click)="deleteproduct()" mdbBtn color="dark" mdbWavesEffect>delete Product</button>
+
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+  </div>
+  <!--Grid row-->
+
+
+
+
+</section>
+<!--Section: Products v.3-->

@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="display-4">Create product</div>
+
+
+
+
+<form [formGroup]="productForm" (ngSubmit)="addProduct()">
+<div class="md-form">
+  <input mdbInput type="text"  formControlName="title"  class="form-control">
+  <label for="form1" class="">product name</label>
+</div>
+
+
+<div class="md-form">
+  <input mdbInput type="text" formControlName="details"  class="form-control">
+  <label for="form1" class="">details</label>
+</div>
+
+<div class="md-form">
+    <input mdbInput type="text"  formControlName="price"  class="form-control">
+    <label for="form1" class="">price</label>
+  </div>
+
+  <div class="md-form">
+    <input mdbInput type="text" formControlName="status"  class="form-control">
+    <label for="form1" class="">status</label>
+  </div>
+
+
+  <div class="md-form">
+    <input mdbInput type="text" formControlName="os_product"  class="form-control">
+    <label for="form1" class="">Os_product</label>
+  </div>
+
+
+  <div class="md-form">
+    <input mdbInput type="text"  formControlName="Ram_product" class="form-control">
+    <label for="form1" class="">Ram_product</label>
+  </div>
+  <div class="md-form">
+    <input mdbInput type="text"  formControlName="company" class="form-control">
+    <label for="form1" class="">Company</label>
+  </div>
+  <div class="md-form">
+    <input mdbInput type="text" formControlName="remise"  class="form-control">
+    <label for="form1" class="">Remise</label>
+  </div>
+
+
+<br>
+
+
+
+<label class="uploadlabel">upload product pictures :  </label>
+  <input type="file"  name="img" multiple (change)="handlefileinput($event)">
+<br>
+    
+
+<mat-form-field>
+  <mat-label>sub-category</mat-label>
+  <mat-select >
+    <mat-option  id={{subcategory.id}}  (click)="getSubcat(i)"   *ngFor="let subcategory of subcategories ; let i=index "  [value]="subcategory.name_subcat">
+      {{subcategory.name_subcat}}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>
+
+
+<br>
+  
+
+
+
+<input class="button-create" type="submit" mdbBtn color="dark" mdbWavesEffect>
+ 
+  </form>
+
+
+
+
+  <div></div>
+
+  </div>
